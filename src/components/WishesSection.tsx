@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FaHeart, FaPaperPlane, FaQrcode, FaCopy, FaCheck, FaQuoteLeft } from 'react-icons/fa';
+import { FaHeart, FaPaperPlane, FaQrcode, FaCopy, FaCheck } from 'react-icons/fa';
 import { db } from "../config/firebaseConfig";
-import { collection, addDoc, Timestamp, onSnapshot, query, orderBy } from "firebase/firestore";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
 
 // ============================================================
 // 🔧 CONFIG — แก้ไขตรงนี้
