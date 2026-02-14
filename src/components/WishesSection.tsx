@@ -16,17 +16,17 @@ const CONFIG = {
 };
 // ============================================================
 
-interface WishItem {
-  name: string;
-  message: string;
-  timestamp: Date;
-}
+// interface WishItem {
+//   name: string;
+//   message: string;
+//   timestamp: Date;
+// }
 
 const WishesSection = () => {
   const [sectionRef, sectionInView] = useInView({ threshold: 0.1, triggerOnce: true });
   const [copied, setCopied] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [wishes, setWishes] = useState<WishItem[]>([]);
+  // const [wishes, setWishes] = useState<WishItem[]>([]);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -35,20 +35,20 @@ const WishesSection = () => {
     message: '',
   });
 
-  useEffect(() => {
-    const q = query(collection(db, "blessings"), orderBy("createdAt", "desc"));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const data = snapshot.docs
-        .filter((doc) => doc.data().message?.trim())
-        .map((doc) => ({
-          name: doc.data().name,
-          message: doc.data().message,
-          timestamp: doc.data().createdAt?.toDate() || new Date(),
-        }));
-      setWishes(data);
-    });
-    return () => unsubscribe();
-  }, []);
+  // useEffect(() => {
+  //   const q = query(collection(db, "blessings"), orderBy("createdAt", "desc"));
+  //   const unsubscribe = onSnapshot(q, (snapshot) => {
+  //     const data = snapshot.docs
+  //       .filter((doc) => doc.data().message?.trim())
+  //       .map((doc) => ({
+  //         name: doc.data().name,
+  //         message: doc.data().message,
+  //         timestamp: doc.data().createdAt?.toDate() || new Date(),
+  //       }));
+  //     setWishes(data);
+  //   });
+  //   return () => unsubscribe();
+  // }, []);
 
 
   const handleChange = (
@@ -119,6 +119,7 @@ const WishesSection = () => {
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
+        
         {/* Section Header */}
         <div className="text-center mb-16">
           <motion.div
@@ -159,15 +160,19 @@ const WishesSection = () => {
         </div>
 
         {/* Two Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+
           {/* ========== LEFT: Form + Wishes ========== */}
           <motion.div
+            className="h-full"
             initial={{ opacity: 0, x: -30 }}
             animate={sectionInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             {/* Form Card */}
-            <div className="bg-white rounded-3xl shadow-xl border border-pink-100/60 overflow-hidden mb-8">
+            <div className="bg-white rounded-3xl shadow-xl border border-pink-100/60 overflow-hidden h-full flex flex-col">
+
+
               <div className="bg-gradient-to-r from-pink-500 to-rose-500 px-6 py-4 text-center">
                 <span className="text-white font-semibold tracking-wide">
                   ✉️ ยืนยัน & อวยพร
@@ -181,7 +186,7 @@ const WishesSection = () => {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
-                    className="p-10 text-center"
+                    className="p-10 text-center flex-1"
                   >
                     <motion.div
                       animate={{ scale: [1, 1.2, 1] }}
@@ -194,7 +199,7 @@ const WishesSection = () => {
                       ขอบคุณค่ะ / ครับ 💕
                     </h4>
                     <p className="text-gray-500">
-                      ได้รับข้อความของท่านแล้ว เราจะติดต่อกลับเร็วๆ นี้
+                      ได้รับขคำอวยพรของคุณแล้ว เราจะเก็บไว้เป็นความทรงจำที่มีค่ามากๆ ค่ะ / ครับ
                     </p>
                   </motion.div>
                 ) : (
@@ -204,7 +209,7 @@ const WishesSection = () => {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     onSubmit={handleSubmit}
-                    className="p-6 space-y-5"
+                    className="p-6 space-y-5 flex-1"
                   >
                     {/* Name */}
                     <div>
@@ -269,7 +274,7 @@ const WishesSection = () => {
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
-                        rows={3}
+                        rows={5}
                         className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-300 focus:border-transparent focus:bg-white outline-none transition resize-none"
                         placeholder="ฝากคำอวยพรถึงบ่าวสาว..."
                       />
@@ -304,7 +309,7 @@ const WishesSection = () => {
             </div>
 
             {/* Wishes Wall */}
-            <div>
+            {/* <div>
               <h4 className="text-gray-700 font-semibold text-sm mb-4 flex items-center gap-2">
                 <FaQuoteLeft className="text-pink-300" />
                 คำอวยพรจากแขกผู้มีเกียรติ
@@ -344,16 +349,18 @@ const WishesSection = () => {
                   </motion.div>
                 ))}
               </div>
-            </div>
+            </div> */}
           </motion.div>
 
           {/* ========== RIGHT: QR Code ========== */}
           <motion.div
+            className="h-full"
             initial={{ opacity: 0, x: 30 }}
             animate={sectionInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            <div className="bg-white rounded-3xl shadow-xl border border-pink-100/60 overflow-hidden sticky top-8">
+            <div className="bg-white rounded-3xl shadow-xl border border-pink-100/60 overflow-hidden h-full flex flex-col">
+
               {/* Card Header */}
               <div className="bg-gradient-to-r from-pink-500 to-rose-500 px-6 py-4 text-center">
                 <div className="flex items-center justify-center gap-2 text-white">
@@ -365,23 +372,24 @@ const WishesSection = () => {
               </div>
 
               {/* Card Body */}
-              <div className="p-8 text-center">
+                <div className="p-5 text-center flex-1">
+
                 {/* QR Code Image */}
                 <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={sectionInView ? { scale: 1, opacity: 1 } : {}}
                   transition={{ duration: 0.5, delay: 0.7 }}
-                  className="inline-block bg-white p-3 rounded-2xl shadow-md border border-gray-100 mb-6"
+                  className="inline-block bg-white p-2 rounded-2xl shadow-md border border-gray-100 mb-4"
                 >
                   <img
                     src={CONFIG.qrImage}
                     alt="PromptPay QR Code"
-                    className="w-56 h-56 object-contain"
+                    className="w-44 h-44 object-contain"
                   />
                 </motion.div>
 
                 {/* Divider */}
-                <div className="flex items-center justify-center gap-2 mb-4">
+                <div className="flex items-center justify-center gap-2 mb-3">
                   <div className="h-[1px] w-8 bg-gray-200" />
                   <span className="text-xs text-gray-400 tracking-wider uppercase">
                     Scan to Pay
@@ -390,7 +398,7 @@ const WishesSection = () => {
                 </div>
 
                 {/* Account Info */}
-                <div className="bg-gradient-to-br from-pink-50 to-rose-50 rounded-xl p-5 mb-5">
+              <div className="bg-gradient-to-br from-pink-50 to-rose-50 rounded-xl p-4 mb-4">
                   <p className="text-gray-500 text-sm mb-1">ชื่อบัญชี</p>
                   <p
                     className="text-gray-800 font-semibold text-lg mb-3"
