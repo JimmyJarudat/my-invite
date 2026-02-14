@@ -64,8 +64,8 @@ const OurStorySectionWithPhoto = () => {
           />
         </div>
 
-        {/* Main Content with Photo */}
-        <div className="grid md:grid-cols-2 gap-12 items-stretch mb-12">
+       {/* Main Content with Photo */}
+        <div className="grid md:grid-cols-[1fr_auto] gap-8 lg:gap-12 items-start mb-12">
           {/* Left: Story Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -178,11 +178,11 @@ const OurStorySectionWithPhoto = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={storyInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="relative"
+            className="relative w-full md:w-[320px] lg:w-[380px] xl:w-[420px] md:sticky md:top-8"
           >
             {/* Glow effect */}
             <motion.div
-              className="absolute inset-0 bg-linear-to-br from-blue-200 to-pink-200 rounded-3xl"
+              className="absolute -inset-3 bg-linear-to-br from-blue-200 to-pink-200 rounded-3xl opacity-50 blur-xl"
               animate={{
                 boxShadow: [
                   '0 0 40px rgba(59, 130, 246, 0.4)',
@@ -191,33 +191,15 @@ const OurStorySectionWithPhoto = () => {
                 ]
               }}
               transition={{ duration: 3, repeat: Infinity }}
-              style={{
-                filter: 'blur(20px)',
-                transform: 'scale(1.05)'
-              }}
             />
 
             {/* Photo container */}
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl
-                aspect-[4/5] sm:aspect-[1/1]
-                md:aspect-auto md:h-full
-                min-h-[340px] sm:min-h-[420px] md:min-h-0">
-
-              {/* TODO: ใส่รูปเล่าเรื่อง - uncomment บรรทัดด้านล่าง */}
-              {/* <img 
-                src="/images/story-photo.jpg" 
-                alt="Our Story" 
-                className="w-full h-full object-cover"
-              /> */}
-
-              {/* Placeholder */}
-              <div className="w-full h-full bg-linear-to-br from-blue-200 via-pink-200 to-purple-200 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-9xl mb-4">📖</div>
-                  <p className="text-gray-600 font-medium">ใส่รูปเล่าเรื่องที่นี่</p>
-                  <p className="text-sm text-gray-500">story-photo.jpg</p>
-                </div>
-              </div>
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+              <img
+                src="/images/story-photo.png"
+                alt="Our Story"
+                className="w-full h-auto block"
+              />
 
               {/* Sparkles */}
               {[...Array(6)].map((_, i) => (

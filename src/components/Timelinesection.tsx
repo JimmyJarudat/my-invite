@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaHeart } from 'react-icons/fa';
+import { useState } from 'react';
 
 const TimelineSection = () => {
   const [timelineRef, timelineInView] = useInView({ threshold: 0.1, triggerOnce: true });
@@ -9,7 +10,7 @@ const TimelineSection = () => {
     {
       emoji: '💕',
       title: 'วันที่เจอกัน',
-      date: '1 มี.ค. 2564',
+      date: '14 ก.พ. 2564',
       description:
         'เริ่มต้นจากการทักทายธรรมดาๆ  ที่ไม่คิดว่าจะกลายเป็นจุดเริ่มต้นของความรักที่สวยงาม',
       image: '/images/timeline/timeline-1.jpg',
@@ -66,7 +67,7 @@ const TimelineSection = () => {
   return (
     <section
       ref={timelineRef}
-      className="py-24 px-6 bg-gradient-to-b from-white via-pink-50/50 to-white relative overflow-hidden"
+      className="py-20 md:py-24 px-4 md:px-6 bg-gradient-to-b from-white via-pink-50/50 to-white relative overflow-hidden"
     >
       {/* Background Decorations */}
       <div className="absolute inset-0 pointer-events-none">
@@ -91,7 +92,7 @@ const TimelineSection = () => {
         className="max-w-5xl mx-auto relative z-10"
       >
         {/* Section Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-14 md:mb-20">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={timelineInView ? { opacity: 1, scale: 1 } : {}}
@@ -106,7 +107,7 @@ const TimelineSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={timelineInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-serif text-4xl md:text-5xl text-gray-800 mt-3 mb-6"
+            className="font-serif text-3xl md:text-5xl text-gray-800 mt-3 mb-6"
           >
             Timeline แห่งรัก
           </motion.h2>
@@ -122,7 +123,7 @@ const TimelineSection = () => {
             initial={{ opacity: 0 }}
             animate={timelineInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-gray-500 mt-4 text-lg"
+            className="text-gray-500 mt-4 text-base md:text-lg"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             ทุกช่วงเวลาที่เราผ่านมาด้วยกัน ล้วนมีความหมาย
@@ -142,7 +143,7 @@ const TimelineSection = () => {
           </div>
 
           {/* Vertical Line — Mobile */}
-          <div className="md:hidden absolute left-6 top-0 bottom-0 w-[2px]">
+          <div className="md:hidden absolute left-[18px] top-0 bottom-0 w-[2px]">
             <motion.div
               initial={{ height: 0 }}
               animate={timelineInView ? { height: '100%' } : {}}
@@ -157,74 +158,32 @@ const TimelineSection = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={timelineInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.15 * (index + 1) }}
-              className="relative mb-16 last:mb-0"
+              className="relative mb-10 md:mb-16 last:mb-0"
             >
-              {/* Desktop Layout */}
+              {/* ===== Desktop Layout ===== */}
               <div className="hidden md:block">
                 <div
                   className={`flex items-start ${
                     item.align === 'left' ? 'justify-start' : 'justify-end'
                   }`}
                 >
-                  <div
-                    className={`w-[45%] ${
-                      item.align === 'right' ? 'ml-auto' : ''
-                    }`}
-                  >
+                  <div className={`w-[45%] ${item.align === 'right' ? 'ml-auto' : ''}`}>
                     <motion.div
                       whileHover={{ y: -5, boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}
                       transition={{ duration: 0.3 }}
                       className={`bg-white rounded-2xl overflow-hidden shadow-lg border border-pink-100/50 ${
-                        item.isHighlight
-                          ? 'ring-2 ring-pink-400 ring-offset-2'
-                          : ''
+                        item.isHighlight ? 'ring-2 ring-pink-400 ring-offset-2' : ''
                       }`}
                     >
-                      {/* Image */}
-                      <div className="h-52 overflow-hidden relative group">
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                          onError={(e) => {
-                            // Fallback ถ้ายังไม่มีรูป
-                            (e.target as HTMLImageElement).style.display = 'none';
-                            (
-                              e.target as HTMLImageElement
-                            ).nextElementSibling?.classList.remove('hidden');
-                          }}
-                        />
-                        {/* Fallback placeholder */}
-                        <div className="hidden w-full h-full absolute inset-0 bg-gradient-to-br from-pink-200 to-rose-300 flex items-center justify-center">
-                          <span className="text-6xl">{item.emoji}</span>
-                        </div>
-
-                        {/* Overlay gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                        {/* Date badge */}
-                        <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
-                          <span className="text-xs font-medium text-pink-600">
-                            {item.date}
-                          </span>
-                        </div>
-
-                        {/* Highlight badge */}
-                        {item.isHighlight && (
-                          <motion.div
-                            animate={{
-                              scale: [1, 1.05, 1],
-                              opacity: [0.9, 1, 0.9],
-                            }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                            className="absolute top-3 left-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white px-3 py-1 rounded-full"
-                          >
-                            <span className="text-xs font-semibold flex items-center gap-1">
-                              ✨ วันสำคัญ
-                            </span>
-                          </motion.div>
-                        )}
-                      </div>
+                      {/* Image — Desktop: aspect-ratio based */}
+                      <TimelineImage
+                        src={item.image}
+                        alt={item.title}
+                        emoji={item.emoji}
+                        date={item.date}
+                        isHighlight={item.isHighlight}
+                        mobile={false}
+                      />
 
                       {/* Content */}
                       <div className="p-6">
@@ -257,9 +216,7 @@ const TimelineSection = () => {
                 >
                   <div
                     className={`w-5 h-5 rounded-full border-4 border-white shadow-md ${
-                      item.isHighlight
-                        ? 'bg-rose-500'
-                        : 'bg-pink-400'
+                      item.isHighlight ? 'bg-rose-500' : 'bg-pink-400'
                     }`}
                   />
                   {item.isHighlight && (
@@ -275,70 +232,43 @@ const TimelineSection = () => {
                 </motion.div>
               </div>
 
-              {/* Mobile Layout */}
-              <div className="md:hidden pl-14">
+              {/* ===== Mobile Layout ===== */}
+              <div className="md:hidden pl-10">
                 <motion.div
-                  whileHover={{ y: -3 }}
                   className={`bg-white rounded-2xl overflow-hidden shadow-lg border border-pink-100/50 ${
                     item.isHighlight ? 'ring-2 ring-pink-400 ring-offset-2' : ''
                   }`}
                 >
-                  {/* Image */}
-                  <div className="h-44 overflow-hidden relative">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).style.display = 'none';
-                        (
-                          e.target as HTMLImageElement
-                        ).nextElementSibling?.classList.remove('hidden');
-                      }}
-                    />
-                    <div className="hidden w-full h-full absolute inset-0 bg-gradient-to-br from-pink-200 to-rose-300 flex items-center justify-center">
-                      <span className="text-5xl">{item.emoji}</span>
-                    </div>
+                  {/* Image — Mobile: smart aspect ratio */}
+                  <TimelineImage
+                    src={item.image}
+                    alt={item.title}
+                    emoji={item.emoji}
+                    date={item.date}
+                    isHighlight={item.isHighlight}
+                    mobile={true}
+                  />
 
-                    <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
-                      <span className="text-xs font-medium text-pink-600">
-                        {item.date}
-                      </span>
-                    </div>
-
-                    {item.isHighlight && (
-                      <motion.div
-                        animate={{
-                          scale: [1, 1.05, 1],
-                          opacity: [0.9, 1, 0.9],
-                        }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                        className="absolute top-3 left-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white px-3 py-1 rounded-full"
-                      >
-                        <span className="text-xs font-semibold flex items-center gap-1">
-                          ✨ วันสำคัญ
-                        </span>
-                      </motion.div>
-                    )}
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-5">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="w-10 h-10 bg-gradient-to-br from-pink-100 to-rose-100 rounded-full flex items-center justify-center flex-shrink-0">
-                        <span className="text-lg">{item.emoji}</span>
+                  {/* Content — Mobile */}
+                  <div className="p-4">
+                    <div className="flex items-center gap-2.5 mb-2">
+                      <div className="w-9 h-9 bg-gradient-to-br from-pink-100 to-rose-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span className="text-base">{item.emoji}</span>
                       </div>
                       <div>
                         <h4
-                          className={`font-semibold ${
+                          className={`font-semibold text-[15px] leading-tight ${
                             item.isHighlight ? 'text-pink-600' : 'text-gray-800'
                           }`}
                         >
                           {item.title}
                         </h4>
+                        <span className="text-[11px] text-pink-400 font-medium">
+                          {item.date}
+                        </span>
                       </div>
                     </div>
-                    <p className="text-gray-600 text-sm leading-relaxed">
+                    <p className="text-gray-600 text-[13px] leading-relaxed">
                       {item.description}
                     </p>
                   </div>
@@ -349,7 +279,7 @@ const TimelineSection = () => {
                   initial={{ scale: 0 }}
                   animate={timelineInView ? { scale: 1 } : {}}
                   transition={{ duration: 0.4, delay: 0.15 * (index + 1) + 0.2 }}
-                  className="absolute left-6 top-20 transform -translate-x-1/2 z-10"
+                  className="absolute left-[18px] top-8 transform -translate-x-1/2 z-10"
                 >
                   <div
                     className={`w-4 h-4 rounded-full border-[3px] border-white shadow-md ${
@@ -366,7 +296,7 @@ const TimelineSection = () => {
             initial={{ scale: 0, opacity: 0 }}
             animate={timelineInView ? { scale: 1, opacity: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.15 * (timelineData.length + 1) + 0.3 }}
-            className="flex justify-center mt-12"
+            className="flex justify-center mt-8 md:mt-12"
           >
             <motion.div
               animate={{
@@ -374,17 +304,126 @@ const TimelineSection = () => {
                 rotate: [0, 5, -5, 0],
               }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="w-14 h-14 bg-gradient-to-br from-pink-400 to-rose-500 rounded-full flex items-center justify-center shadow-lg"
+              className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-pink-400 to-rose-500 rounded-full flex items-center justify-center shadow-lg"
               style={{
                 boxShadow: '0 0 30px rgba(244,114,182,0.4)',
               }}
             >
-              <FaHeart className="text-white text-xl" />
+              <FaHeart className="text-white text-lg md:text-xl" />
             </motion.div>
           </motion.div>
         </div>
       </motion.div>
     </section>
+  );
+};
+
+/* ============================================
+   Smart Image Component
+   - ตรวจสอบขนาดรูปจริง (portrait / landscape)
+   - แสดงรูปเต็มไม่ crop ส่วนสำคัญหาย
+   ============================================ */
+interface TimelineImageProps {
+  src: string;
+  alt: string;
+  emoji: string;
+  date: string;
+  isHighlight?: boolean;
+  mobile: boolean;
+}
+
+const TimelineImage: React.FC<TimelineImageProps> = ({
+  src,
+  alt,
+  emoji,
+  date,
+  isHighlight,
+  mobile,
+}) => {
+  const [orientation, setOrientation] = useState<'portrait' | 'landscape' | 'square'>('landscape');
+  const [imgError, setImgError] = useState(false);
+
+  const handleLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = e.target as HTMLImageElement;
+    const ratio = img.naturalWidth / img.naturalHeight;
+    if (ratio < 0.85) {
+      setOrientation('portrait');
+    } else if (ratio > 1.15) {
+      setOrientation('landscape');
+    } else {
+      setOrientation('square');
+    }
+  };
+
+  // กำหนด aspect-ratio ตาม orientation
+  // Portrait: แสดงแนวตั้ง (4:5) ให้เห็นเต็มรูป
+  // Landscape: แสดงแนวนอน (16:10)
+  // Square: แสดง 1:1
+  const getAspectClass = () => {
+    if (mobile) {
+      switch (orientation) {
+        case 'portrait':
+          return 'aspect-[3/4]'; // มือถือ portrait ให้สูงขึ้น
+        case 'square':
+          return 'aspect-square';
+        default:
+          return 'aspect-[4/3]';
+      }
+    } else {
+      switch (orientation) {
+        case 'portrait':
+          return 'aspect-[3/4]';
+        case 'square':
+          return 'aspect-square';
+        default:
+          return 'aspect-[16/10]';
+      }
+    }
+  };
+
+  return (
+    <div className={`relative overflow-hidden group ${getAspectClass()}`}>
+      {!imgError ? (
+        <img
+          src={src}
+          alt={alt}
+          onLoad={handleLoad}
+          onError={() => setImgError(true)}
+          className={`w-full h-full transition-transform duration-500 group-hover:scale-105 ${
+            orientation === 'portrait' ? 'object-cover object-top' : 'object-cover object-center'
+          }`}
+        />
+      ) : (
+        /* Fallback ถ้าไม่มีรูป */
+        <div className="w-full h-full bg-gradient-to-br from-pink-200 to-rose-300 flex items-center justify-center">
+          <span className={mobile ? 'text-5xl' : 'text-6xl'}>{emoji}</span>
+        </div>
+      )}
+
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
+
+      {/* Date badge — Desktop only (mobile shows date in content) */}
+      {!mobile && (
+        <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
+          <span className="text-xs font-medium text-pink-600">{date}</span>
+        </div>
+      )}
+
+      {/* Highlight badge */}
+      {isHighlight && (
+        <motion.div
+          animate={{
+            scale: [1, 1.05, 1],
+            opacity: [0.9, 1, 0.9],
+          }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="absolute top-3 left-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white px-3 py-1 rounded-full shadow-sm"
+        >
+          <span className="text-xs font-semibold flex items-center gap-1">✨ วันสำคัญ</span>
+        </motion.div>
+      )}
+    </div>
   );
 };
 

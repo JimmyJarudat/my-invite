@@ -450,7 +450,7 @@ const PreWeddingGallery = () => {
           })}
         </motion.div>
 
-        {/* Enhanced Lightbox Modal */}
+       {/* Enhanced Lightbox Modal */}
         {selectedImage !== null && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -466,7 +466,7 @@ const PreWeddingGallery = () => {
             {[...Array(10)].map((_, i) => (
               <motion.div
                 key={`modal-heart-${i}`}
-                className="absolute text-pink-500/10"
+                className="absolute text-pink-500/10 pointer-events-none"
                 style={{
                   left: `${Math.random() * 100}%`,
                   top: `${Math.random() * 100}%`,
@@ -486,7 +486,7 @@ const PreWeddingGallery = () => {
               </motion.div>
             ))}
 
-            {/* Close Button with Enhanced Style */}
+            {/* Close Button - ย้ายให้ปลอดภัยจาก notch + ใหญ่ขึ้นบน mobile */}
             <motion.button
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
@@ -496,20 +496,24 @@ const PreWeddingGallery = () => {
                 boxShadow: '0 0 30px rgba(244, 114, 182, 0.6)'
               }}
               whileTap={{ scale: 0.9 }}
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-6 right-6 text-white text-2xl z-20 bg-linear-to-br from-pink-500 to-rose-600 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl backdrop-blur-sm border-2 border-white/20"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedImage(null);
+              }}
+              className="absolute top-4 left-4 sm:top-6 sm:right-6 text-white text-2xl z-30 bg-linear-to-br from-pink-500 to-rose-600 w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-2xl backdrop-blur-sm border-2 border-white/20"
+              style={{ WebkitTapHighlightColor: 'transparent' }}
               aria-label="ปิด"
             >
               ✕
             </motion.button>
 
-            {/* รูปภาพขนาดใหญ่ - รักษา aspect ratio */}
+            {/* รูปภาพขนาดใหญ่ - แก้ให้กดพื้นหลังปิดได้ */}
             <motion.div
               initial={{ scale: 0.7, opacity: 0, y: 50 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               transition={{ type: 'spring', damping: 20, stiffness: 150 }}
-              className="relative w-full h-full flex items-center justify-center"
-              onClick={(e) => e.stopPropagation()}
+              className="relative flex items-center justify-center pointer-events-none"
+              style={{ maxWidth: '90vw', maxHeight: '75vh' }}
             >
               {(() => {
                 const currentPhoto = preweddingPhotos[selectedImage];
@@ -517,7 +521,7 @@ const PreWeddingGallery = () => {
 
                 if (!data?.loaded) {
                   return (
-                    <div className="w-96 h-96 bg-linear-to-br from-pink-500 via-rose-500 to-pink-600 rounded-2xl flex flex-col items-center justify-center shadow-2xl">
+                    <div className="w-72 h-72 sm:w-96 sm:h-96 bg-linear-to-br from-pink-500 via-rose-500 to-pink-600 rounded-2xl flex flex-col items-center justify-center shadow-2xl pointer-events-auto">
                       <motion.div
                         animate={{ 
                           scale: [1, 1.3, 1],
@@ -525,20 +529,16 @@ const PreWeddingGallery = () => {
                         }}
                         transition={{ duration: 2, repeat: Infinity }}
                       >
-                        <FaHeart className="text-white text-9xl mb-6 drop-shadow-2xl" />
+                        <FaHeart className="text-white text-7xl sm:text-9xl mb-6 drop-shadow-2xl" />
                       </motion.div>
-                      <p className="text-white text-2xl font-light tracking-wider">กำลังโหลดรูปภาพ...</p>
+                      <p className="text-white text-xl sm:text-2xl font-light tracking-wider">กำลังโหลดรูปภาพ...</p>
                     </div>
                   );
                 }
 
                 return (
                   <div
-                    className="relative flex items-center justify-center"
-                    style={{
-                      maxWidth: '90vw',
-                      maxHeight: '85vh'
-                    }}
+                    className="relative flex items-center justify-center pointer-events-auto"
                   >
                     <motion.img
                       initial={{ filter: 'blur(20px)' }}
@@ -546,11 +546,12 @@ const PreWeddingGallery = () => {
                       transition={{ duration: 0.5 }}
                       src={currentPhoto.src}
                       alt={currentPhoto.alt}
-                      className="max-w-full max-h-[85vh] w-auto h-auto object-contain rounded-2xl"
+                      className="max-w-[90vw] max-h-[70vh] sm:max-h-[75vh] w-auto h-auto object-contain rounded-2xl"
                       style={{
                         aspectRatio: data.aspectRatio,
                         boxShadow: '0 25px 100px rgba(0, 0, 0, 0.5), 0 0 60px rgba(244, 114, 182, 0.3)'
                       }}
+                      draggable={false}
                     />
                     
                     {/* Image Border Glow */}
@@ -565,8 +566,8 @@ const PreWeddingGallery = () => {
               })()}
             </motion.div>
 
-            {/* Enhanced Navigation Arrows */}
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-4 z-10">
+            {/* Navigation - ปรับให้ mobile ใช้ง่าย */}
+            <div className="absolute bottom-[env(safe-area-inset-bottom,16px)] left-0 right-0 flex justify-center gap-3 sm:gap-4 z-10 px-4 pb-4">
               <motion.button
                 whileHover={{ 
                   scale: 1.1,
@@ -579,10 +580,22 @@ const PreWeddingGallery = () => {
                     prev !== null && prev > 0 ? prev - 1 : preweddingPhotos.length - 1
                   );
                 }}
-                className="bg-linear-to-br from-pink-500 to-rose-600 backdrop-blur-sm text-white px-8 py-4 rounded-full font-medium shadow-2xl border-2 border-white/20 flex items-center gap-2"
+                className="bg-linear-to-br from-pink-500 to-rose-600 backdrop-blur-sm text-white px-5 py-3 sm:px-8 sm:py-4 rounded-full font-medium shadow-2xl border-2 border-white/20 flex items-center gap-2"
               >
-                <span className="text-2xl">←</span>
-                <span>ก่อนหน้า</span>
+                <span className="text-xl sm:text-2xl">←</span>
+                <span className="hidden sm:inline">ก่อนหน้า</span>
+              </motion.button>
+
+              {/* ปุ่มปิด ตรงกลาง - mobile เห็นชัด */}
+              <motion.button
+                whileTap={{ scale: 0.9 }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedImage(null);
+                }}
+                className="bg-white/20 backdrop-blur-sm text-white px-5 py-3 sm:px-6 sm:py-4 rounded-full font-medium shadow-2xl border-2 border-white/20 flex items-center gap-2 sm:hidden"
+              >
+                <span>✕ ปิด</span>
               </motion.button>
 
               <motion.button
@@ -597,29 +610,29 @@ const PreWeddingGallery = () => {
                     prev !== null && prev < preweddingPhotos.length - 1 ? prev + 1 : 0
                   );
                 }}
-                className="bg-linear-to-br from-pink-500 to-rose-600 backdrop-blur-sm text-white px-8 py-4 rounded-full font-medium shadow-2xl border-2 border-white/20 flex items-center gap-2"
+                className="bg-linear-to-br from-pink-500 to-rose-600 backdrop-blur-sm text-white px-5 py-3 sm:px-8 sm:py-4 rounded-full font-medium shadow-2xl border-2 border-white/20 flex items-center gap-2"
               >
-                <span>ถัดไป</span>
-                <span className="text-2xl">→</span>
+                <span className="hidden sm:inline">ถัดไป</span>
+                <span className="text-xl sm:text-2xl">→</span>
               </motion.button>
             </div>
 
-            {/* Enhanced Image Counter */}
+            {/* Image Counter */}
             <motion.div
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="absolute top-6 left-1/2 transform -translate-x-1/2 text-white text-lg bg-linear-to-br from-pink-500 to-rose-600 backdrop-blur-sm px-8 py-3 rounded-full shadow-2xl border-2 border-white/20 font-medium"
+              className="absolute top-4 left-1/2 transform -translate-x-1/2 text-white text-sm sm:text-lg bg-linear-to-br from-pink-500 to-rose-600 backdrop-blur-sm px-5 py-2 sm:px-8 sm:py-3 rounded-full shadow-2xl border-2 border-white/20 font-medium z-20"
             >
               {selectedImage + 1} / {preweddingPhotos.length}
             </motion.div>
 
-            {/* Keyboard Hint */}
+            {/* Keyboard Hint - desktop only */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.6 }}
               transition={{ delay: 1 }}
-              className="absolute bottom-24 left-1/2 transform -translate-x-1/2 text-white/60 text-sm flex gap-6"
+              className="absolute bottom-24 left-1/2 transform -translate-x-1/2 text-white/60 text-sm gap-6 hidden sm:flex"
             >
               <span>← → เปลี่ยนรูป</span>
               <span>ESC ปิด</span>

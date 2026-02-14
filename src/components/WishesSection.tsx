@@ -74,7 +74,7 @@ const WishesSection = () => {
       setTimeout(() => {
         setSubmitted(false);
         setFormData({ name: '', attendance: 'yes', guests: '1', message: '' });
-      }, 4000);
+      }, 10000);
     } catch (error) {
       console.error('Error:', error);
       alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');

@@ -298,7 +298,7 @@ const HeroSection = ({ onOpenInvitation }: HeroSectionProps) => {
             >
               ✨
             </motion.span>
-            Open the website
+            Open Invitation
             <motion.span
               animate={{
                 scale: [1, 1.2, 1],
