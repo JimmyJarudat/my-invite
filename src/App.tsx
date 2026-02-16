@@ -7,7 +7,7 @@ import WelcomeSection from './components/Welcomesection';
 import OurStorySection from './components/Ourstorysection';
 import TimelineSection from './components/Timelinesection';
 import PreWeddingGallery from './components/Preweddinggallery';
-import LoveQuoteSection from './components/Lovequotesection';
+// import LoveQuoteSection from './components/Lovequotesection';
 import WeddingDetailsSection from './components/Weddingdetailssection';
 import WishesSection from './components/WishesSection';
 import Footer from './components/Footer';
@@ -76,7 +76,7 @@ function App() {
             <OurStorySection />
             <TimelineSection />
             <PreWeddingGallery />
-            <LoveQuoteSection />
+            {/* <LoveQuoteSection /> */}
             <WeddingDetailsSection />
             <WishesSection />
             <Footer />
