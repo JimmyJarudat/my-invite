@@ -22,7 +22,7 @@ const TimelineSection = () => {
       date: '15 พ.ค. 2562',
       description:
         'หลังจากคบหากันมาสักระยะ เราตัดสินใจที่จะเดินหน้าไปด้วยกันอย่างจริงจัง และนั่นคือจุดเริ่มต้นที่สวยงามของเรา',
-      image: '/images/timeline/timeline-2.jpg',
+      image: '/images/timeline/timeline-9.jpg',
       align: 'right' as const,
     },
     {
