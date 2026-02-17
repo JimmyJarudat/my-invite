@@ -13,7 +13,7 @@ const TimelineSection = () => {
       date: '14 ก.พ. 2564',
       description:
         'เริ่มต้นจากการทักทายธรรมดาๆ  ที่ไม่คิดว่าจะกลายเป็นจุดเริ่มต้นของความรักที่สวยงาม',
-      image: '/images/timeline/timeline-1.jpg',
+      image: '/images/timeline/timeline-0.jpg',
       align: 'left' as const,
     },
     {
