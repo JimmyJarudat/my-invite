@@ -35,7 +35,7 @@ const PreWeddingGallery = () => {
   const preweddingPhotos = [
     { id: 1, src: '/images/prewedding/1.jpg', alt: 'Pre-Wedding 1' },
     { id: 2, src: '/images/prewedding/2.jpg', alt: 'Pre-Wedding 2' },
-    { id: 3, src: '/images/prewedding/3.jpg', alt: 'Pre-Wedding 3' },
+    { id: 3, src: '/images/prewedding/33.jpg', alt: 'Pre-Wedding 3' },
     { id: 4, src: '/images/prewedding/4.jpg', alt: 'Pre-Wedding 4' },
     { id: 5, src: '/images/prewedding/5.jpg', alt: 'Pre-Wedding 5' },
     { id: 6, src: '/images/prewedding/6.jpg', alt: 'Pre-Wedding 6' },
@@ -233,111 +233,98 @@ const PreWeddingGallery = () => {
       ))}
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Enhanced Header with Decorative Elements */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={galleryInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-20"
-        >
-          {/* Top Decorative Hearts */}
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={galleryInView ? { scale: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex justify-center items-center mb-6 gap-3"
-          >
-            <motion.div
-              animate={{
-                y: [0, -10, 0],
-                rotate: [0, -10, 0]
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <FaHeart className="text-pink-400 text-4xl drop-shadow-[0_0_10px_rgba(244,114,182,0.5)]" />
-            </motion.div>
+       {/* Enhanced Header with Decorative Elements */}
+<motion.div
+  initial={{ opacity: 0, y: 30 }}
+  animate={galleryInView ? { opacity: 1, y: 0 } : {}}
+  transition={{ duration: 0.8 }}
+  className="text-center mb-20"
+>
+  {/* Top Decorative Hearts */}
+  <motion.div
+    initial={{ scale: 0 }}
+    animate={galleryInView ? { scale: 1 } : {}}
+    transition={{ duration: 0.6, delay: 0.3 }}
+    className="flex justify-center items-center mb-6 gap-3"
+  >
+    <motion.div
+      animate={{ y: [0, -10, 0], rotate: [0, -10, 0] }}
+      transition={{ duration: 2, repeat: Infinity }}
+    >
+      <FaHeart className="text-pink-300 text-4xl drop-shadow-[0_0_10px_rgba(244,114,182,0.3)]" />
+    </motion.div>
 
-            <motion.div
-              animate={{
-                scale: [1, 1.15, 1],
-                rotate: [0, 10, 0]
-              }}
-              transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
-            >
-              <GiDiamondRing className="text-rose-500 text-5xl drop-shadow-[0_0_15px_rgba(244,63,94,0.6)]" />
-            </motion.div>
+    <motion.div
+      animate={{ scale: [1, 1.15, 1], rotate: [0, 10, 0] }}
+      transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
+    >
+      <GiDiamondRing className="text-rose-400 text-5xl drop-shadow-[0_0_15px_rgba(244,63,94,0.3)]" />
+    </motion.div>
 
-            <motion.div
-              animate={{
-                y: [0, -10, 0],
-                rotate: [0, 10, 0]
-              }}
-              transition={{ duration: 2, repeat: Infinity, delay: 0.6 }}
-            >
-              <FaHeart className="text-pink-400 text-4xl drop-shadow-[0_0_10px_rgba(244,114,182,0.5)]" />
-            </motion.div>
-          </motion.div>
+    <motion.div
+      animate={{ y: [0, -10, 0], rotate: [0, 10, 0] }}
+      transition={{ duration: 2, repeat: Infinity, delay: 0.6 }}
+    >
+      <FaHeart className="text-pink-300 text-4xl drop-shadow-[0_0_10px_rgba(244,114,182,0.3)]" />
+    </motion.div>
+  </motion.div>
 
-          {/* Title with Gradient and Glow */}
-          <motion.h2
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={galleryInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-serif text-5xl md:text-6xl mb-4 relative inline-block"
-            style={{
-              background: 'linear-gradient(135deg, #ec4899 0%, #be185d 50%, #ec4899 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              filter: 'drop-shadow(0 2px 15px rgba(244, 114, 182, 0.3))',
-            }}
-          >
-            <motion.span
-              animate={{
-                textShadow: [
-                  '0 0 20px rgba(244, 114, 182, 0.3)',
-                  '0 0 30px rgba(244, 114, 182, 0.5)',
-                  '0 0 20px rgba(244, 114, 182, 0.3)',
-                ]
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              Pre-Wedding Gallery
-            </motion.span>
-          </motion.h2>
+  {/* Title with Gradient and Glow */}
+  <motion.h2
+    initial={{ opacity: 0, scale: 0.9 }}
+    animate={galleryInView ? { opacity: 1, scale: 1 } : {}}
+    transition={{ duration: 0.8, delay: 0.2 }}
+    className="font-serif text-5xl md:text-6xl mb-4 relative inline-block"
+    style={{
+      background: 'linear-gradient(135deg, #f9a8d4 0%, #fda4af 50%, #f9a8d4 100%)',
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+      backgroundClip: 'text',
+      filter: 'drop-shadow(0 2px 15px rgba(244, 114, 182, 0.15))',
+    }}
+  >
+    <motion.span
+      animate={{
+        textShadow: [
+          '0 0 20px rgba(244, 114, 182, 0.15)',
+          '0 0 30px rgba(244, 114, 182, 0.25)',
+          '0 0 20px rgba(244, 114, 182, 0.15)',
+        ]
+      }}
+      transition={{ duration: 2, repeat: Infinity }}
+    >
+      Pre-Wedding Gallery
+    </motion.span>
+  </motion.h2>
 
-          {/* Animated Divider */}
-          <motion.div
-            initial={{ width: 0 }}
-            animate={galleryInView ? { width: '200px' } : {}}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="h-1 bg-gradient-to-r from-pink-400 via-rose-500 to-pink-400 mx-auto mb-6 rounded-full"
-            style={{
-              boxShadow: '0 0 15px rgba(244, 114, 182, 0.5)'
-            }}
-          />
+  {/* Animated Divider */}
+  <motion.div
+    initial={{ width: 0 }}
+    animate={galleryInView ? { width: '200px' } : {}}
+    transition={{ duration: 1, delay: 0.4 }}
+    className="h-1 bg-gradient-to-r from-pink-200 via-rose-300 to-pink-200 mx-auto mb-6 rounded-full"
+    style={{ boxShadow: '0 0 15px rgba(244, 114, 182, 0.2)' }}
+  />
 
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={galleryInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-xl md:text-2xl text-gray-600 font-light tracking-wide"
-            style={{
-              fontFamily: "'Playfair Display', serif",
-              textShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
-            }}
-          >
-            <motion.span
-              animate={{
-                opacity: [0.7, 1, 0.7]
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              Our Pre-Wedding Moments ✨
-            </motion.span>
-          </motion.p>
-        </motion.div>
+  {/* Subtitle */}
+  <motion.p
+    initial={{ opacity: 0 }}
+    animate={galleryInView ? { opacity: 1 } : {}}
+    transition={{ duration: 0.8, delay: 0.5 }}
+    className="text-xl md:text-2xl text-gray-600 font-light tracking-wide"
+    style={{
+      fontFamily: "'Playfair Display', serif",
+      textShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
+    }}
+  >
+    <motion.span
+      animate={{ opacity: [0.7, 1, 0.7] }}
+      transition={{ duration: 2, repeat: Infinity }}
+    >
+      Our Pre-Wedding Moments ✨
+    </motion.span>
+  </motion.p>
+</motion.div>
 
         {/* Enhanced Masonry Grid Layout */}
         <motion.div

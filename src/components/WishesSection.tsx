@@ -173,8 +173,8 @@ const WishesSection = () => {
             <div className="bg-white rounded-3xl shadow-xl border border-pink-100/60 overflow-hidden h-full flex flex-col">
 
 
-              <div className="bg-gradient-to-r from-pink-500 to-rose-500 px-6 py-4 text-center">
-                <span className="text-white font-semibold tracking-wide">
+              <div className="bg-gradient-to-r from-pink-200 to-rose-200 px-6 py-4 text-center">
+                <span className="text-rose-600 font-semibold tracking-wide">
                   ✉️ ยืนยัน & อวยพร
                 </span>
               </div>
@@ -293,7 +293,7 @@ const WishesSection = () => {
                       }}
                       whileTap={{ scale: 0.98 }}
                       type="submit"
-                      className="w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white py-3.5 rounded-xl font-semibold text-base shadow-lg flex items-center justify-center gap-2 relative overflow-hidden"
+                      className="w-full bg-gradient-to-r from-pink-200 to-rose-200 text-rose-600 py-3.5 rounded-xl font-semibold text-base shadow-lg flex items-center justify-center gap-2 relative overflow-hidden"
                     >
                       <motion.div
                         className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0"
@@ -362,8 +362,8 @@ const WishesSection = () => {
             <div className="bg-white rounded-3xl shadow-xl border border-pink-100/60 overflow-hidden h-full flex flex-col">
 
               {/* Card Header */}
-              <div className="bg-gradient-to-r from-pink-500 to-rose-500 px-6 py-4 text-center">
-                <div className="flex items-center justify-center gap-2 text-white">
+              <div className="bg-gradient-to-r from-pink-200 to-rose-200 px-6 py-4 text-center">
+                <div className="flex items-center justify-center gap-2 text-rose-600">
                   <FaQrcode className="text-lg" />
                   <span className="font-semibold tracking-wide">
                     พร้อมเพย์ PromptPay

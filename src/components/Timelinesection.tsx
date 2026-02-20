@@ -13,7 +13,7 @@ const TimelineSection = () => {
       date: '14 ก.พ. 2564',
       description:
         'เริ่มต้นจากการทักทายธรรมดาๆ  ที่ไม่คิดว่าจะกลายเป็นจุดเริ่มต้นของความรักที่สวยงาม',
-      image: '/images/timeline/timeline-1.jpg',
+      image: '/images/timeline/timeline-0.jpg',
       align: 'left' as const,
     },
     {
@@ -22,7 +22,7 @@ const TimelineSection = () => {
       date: '15 พ.ค. 2562',
       description:
         'หลังจากคบหากันมาสักระยะ เราตัดสินใจที่จะเดินหน้าไปด้วยกันอย่างจริงจัง และนั่นคือจุดเริ่มต้นที่สวยงามของเรา',
-      image: '/images/timeline/timeline-2.jpg',
+      image: '/images/timeline/timeline-9.jpg',
       align: 'right' as const,
     },
     {

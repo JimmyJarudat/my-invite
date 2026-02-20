@@ -151,8 +151,7 @@ const WeddingDetailsSection = () => {
                 transition={{ duration: 0.6, delay: 0.5 }}
                 className="font-serif text-2xl md:text-3xl mb-2"
                 style={{
-                  background:
-                    'linear-gradient(135deg, #ec4899 0%, #f43f5e 50%, #ec4899 100%)',
+                  background: 'linear-gradient(135deg, #f9a8d4 0%, #fda4af 50%, #f9a8d4 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -167,8 +166,7 @@ const WeddingDetailsSection = () => {
                 transition={{ duration: 0.6, delay: 0.6 }}
                 className="font-serif text-2xl md:text-3xl"
                 style={{
-                  background:
-                    'linear-gradient(135deg, #ec4899 0%, #f43f5e 50%, #ec4899 100%)',
+                  background: 'linear-gradient(135deg, #f9a8d4 0%, #fda4af 50%, #f9a8d4 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -197,8 +195,8 @@ const WeddingDetailsSection = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="bg-white rounded-3xl shadow-lg border border-pink-100/50 overflow-hidden mb-8"
           >
-            <div className="bg-gradient-to-r from-pink-500 to-rose-500 py-3 text-center">
-              <span className="text-white/80 text-xs tracking-[0.2em] uppercase font-medium">
+            <div className="bg-gradient-to-r from-pink-200 to-rose-200 py-3 text-center">
+              <span className="text-gray-800/80 text-xs tracking-[0.2em] uppercase font-medium">
                 Save the Date
               </span>
             </div>
@@ -226,8 +224,7 @@ const WeddingDetailsSection = () => {
                     <span
                       className="text-8xl md:text-9xl font-bold leading-none"
                       style={{
-                        background:
-                          'linear-gradient(135deg, #ec4899 0%, #f43f5e 50%, #ec4899 100%)',
+                        background: 'linear-gradient(135deg, #e8799b 0%, #e8647a 50%, #e8799b 100%)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                         backgroundClip: 'text',
@@ -292,7 +289,7 @@ const WeddingDetailsSection = () => {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-500 to-pink-500 text-white px-6 py-2.5 rounded-full text-sm font-medium shadow-md hover:shadow-lg transition-shadow"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-200 to-rose-200 text-gray-700 px-6 py-2.5 rounded-full text-sm font-medium shadow-md hover:shadow-lg transition-shadow"
                 >
                   <FaMapPin className="text-xs" />
                   ดูแผนที่ Google Maps
@@ -345,7 +342,7 @@ const WeddingDetailsSection = () => {
                   onClick={() => setShowMorlam(true)}
                   className="w-full flex items-center gap-4 bg-gradient-to-r from-pink-50 to-rose-50 border border-pink-200/60 rounded-xl p-3 text-left hover:shadow-md transition-shadow group"
                 >
-                  <div className="w-10 h-10 bg-gradient-to-br from-pink-400 to-rose-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 bg-gradient-to-br from-pink-200 to-rose-300 rounded-xl flex items-center justify-center flex-shrink-0">
                     <span className="text-lg">🎶</span>
                   </div>
                   <div className="flex-1 min-w-0">

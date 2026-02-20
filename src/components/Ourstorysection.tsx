@@ -195,7 +195,7 @@ const OurStorySectionWithPhoto = () => {
             {/* Photo container */}
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src="/images/story-photo.png"
+                src="/images/story-photo-1.png"
                 alt="Our Story"
                 className="w-full h-auto block"
               />
